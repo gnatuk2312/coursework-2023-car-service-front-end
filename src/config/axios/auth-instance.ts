@@ -7,7 +7,7 @@ import {
 } from "./interceptors";
 
 const authAxiosInstance = axios.create({
-  baseURL: `http://localhost:5000/api`,
+  baseURL: `http://localhost:5000`,
   timeout: 5000,
   withCredentials: true,
   headers: { "Content-Type": "application/json" },

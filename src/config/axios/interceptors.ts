@@ -13,7 +13,7 @@ export const setAuthorizationHeaderRequestInterceptor = (
 };
 
 export const transformResponseInterceptor = (response: AxiosResponse): any => {
-  response.data;
+  return response.data;
 };
 
 export const transformErrorInterceptor = (error: AxiosError): any => {
