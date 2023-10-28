@@ -1,5 +1,6 @@
 "use client";
 import { ChangeEvent, FC, FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Box,
   Button,
@@ -8,10 +9,15 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+
 import PasswordField from "@/components/PasswordField";
 import { signInRequest } from "@/common/services/api/auth/auth.api";
+import { AUTH_SIGN_IN, useAuthContext } from "@/common/context/AuthContext";
 
 const Login: FC = () => {
+  const { push } = useRouter();
+  const { dispatch } = useAuthContext();
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -28,6 +34,8 @@ const Login: FC = () => {
 
     await signInRequest({ body: { email, password } }).then((response) => {
       localStorage.setItem("accessToken", response.accessToken);
+      dispatch({ type: AUTH_SIGN_IN });
+      push("/");
     });
   };
 

@@ -1,4 +1,3 @@
-"use client";
 import { FC } from "react";
 import Link from "next/link";
 import { Link as MuiLink, Stack, Typography } from "@mui/material";
@@ -17,6 +16,10 @@ const Navigation: FC = () => {
           </MuiLink>
         </Typography>
       </Stack>
+      <br />
+      <MuiLink component={Link} href="/">
+        Home
+      </MuiLink>
       <br />
       <MuiLink component={Link} href="/clients">
         To All Clients
