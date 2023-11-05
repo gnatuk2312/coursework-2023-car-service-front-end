@@ -1,4 +1,4 @@
-import { AuthResponseInterface } from "@/common/types/types.common";
+import { AuthResponseInterface } from "@/common/types/common.types";
 
 export type GetUsersResponseType = any;
 
