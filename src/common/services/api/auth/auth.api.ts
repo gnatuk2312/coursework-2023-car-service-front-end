@@ -1,11 +1,5 @@
-import axios from "axios";
-
-import {
-  GetUsersResponseType,
-  SignInArgumentsInterface,
-  SignInResponseType,
-} from "./auth.types";
 import baseAxiosInstance from "@/config/axios/base-instance";
+import { SignInArgumentsInterface, SignInResponseType } from "./auth.types";
 
 export const signInRequest = async (
   args: SignInArgumentsInterface
@@ -13,8 +7,4 @@ export const signInRequest = async (
   const { body } = args;
 
   return await baseAxiosInstance.post("/auth/sign-in", body);
-};
-
-export const getUsersRequest = async (): Promise<GetUsersResponseType> => {
-  return await axios.get("https://jsonplaceholder.typicode.com/users");
 };

@@ -7,3 +7,7 @@ export const removeNullKeys = <T>(obj: T): T => {
 
   return newObj as T;
 };
+
+export const getSkipForPagination = (page: number, take: number): number => {
+  return page * take - take;
+};

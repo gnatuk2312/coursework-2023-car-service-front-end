@@ -1,7 +1,5 @@
 import { AuthResponseInterface } from "@/common/types/common.types";
 
-export type GetUsersResponseType = any;
-
 interface SignInBodyInterface {
   email: string;
   password: string;
