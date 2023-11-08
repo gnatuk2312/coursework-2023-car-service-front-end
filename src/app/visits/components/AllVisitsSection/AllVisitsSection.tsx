@@ -1,9 +1,17 @@
 import { FC } from "react";
+import Link from "next/link";
 import { format } from "date-fns";
-import { Box, Container, Link, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Link as MuiLink,
+  Stack,
+  Typography,
+} from "@mui/material";
 import InsertInvitationIcon from "@mui/icons-material/InsertInvitation";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import PersonIcon from "@mui/icons-material/Person";
 
 import NoData from "@/components/NoData";
 import PendingIndicator from "@/components/PendingIndicator";
@@ -24,7 +32,7 @@ const AllVisitsSection: FC<Props> = (props) => {
   return (
     <Container component="section" sx={{ my: 4 }}>
       {visits.map((visit) => {
-        const { id, date, time, description, phone } = visit;
+        const { id, date, time, description, phone, client } = visit;
 
         return (
           <Card key={id}>
@@ -36,14 +44,29 @@ const AllVisitsSection: FC<Props> = (props) => {
               <Typography>{format(new Date(date), "dd MMMM yyyy")}</Typography>
               <AccessTimeIcon color="primary" />
               <Typography>{format(new Date(time), "hh:mm")}</Typography>
-              {Boolean(phone) && (
-                <Box flex={1} display="flex" justifyContent="flex-end">
-                  <LocalPhoneIcon color="primary" />
-                  <Link ml={1} href={`tel:${phone}`} underline="hover">
-                    {phone}
-                  </Link>
-                </Box>
-              )}
+              <Box flex={1} display="flex" justifyContent="flex-end">
+                {client !== null && (
+                  <>
+                    <PersonIcon color="primary" />
+                    <MuiLink
+                      component={Link}
+                      href={`/clients/${client.id}`}
+                      ml={1}
+                      underline="hover"
+                    >
+                      {client.firstName} {client.lastName}
+                    </MuiLink>
+                  </>
+                )}
+                {Boolean(phone) && (
+                  <>
+                    <LocalPhoneIcon color="primary" sx={{ ml: 2 }} />
+                    <MuiLink ml={1} href={`tel:${phone}`} underline="hover">
+                      {phone}
+                    </MuiLink>
+                  </>
+                )}
+              </Box>
             </Stack>
           </Card>
         );

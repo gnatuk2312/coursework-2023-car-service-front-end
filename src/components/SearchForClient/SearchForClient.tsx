@@ -57,7 +57,8 @@ const SearchForClient: FC<Props> = (props) => {
       <TextField
         value={search}
         onChange={handleSearchChange}
-        label="Введіть ім'я та прізвище"
+        label="Пошук клієнта"
+        placeholder="Введіть ім'я та прізвище"
         fullWidth
       />
       {clients.totalFiltered !== 0 && (

@@ -17,7 +17,8 @@ import {
 
 import { createVisitRequest } from "@/common/services/api/visit/visit.api";
 import { removeNullKeys } from "@/common/utils/common.utils";
-import { VisitInterface } from "@/common/types/entities.types";
+import { ClientInterface, VisitInterface } from "@/common/types/entities.types";
+import SearchForClient from "@/components/SearchForClient";
 
 type Props = {
   isOpen: boolean;
@@ -32,7 +33,6 @@ const CreateVisitDialog: FC<Props> = (props) => {
   const [time, setTime] = useState<string | null>(null);
   const [description, setDescription] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
-  //TODO: add dynamic select for client
   const [clientId, setClientId] = useState<string | null>(null);
 
   const handleDateChange = (value: Date | null): void => setDate(value);
@@ -44,6 +44,10 @@ const CreateVisitDialog: FC<Props> = (props) => {
   };
   const handlePhoneChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setPhone(event.target.value);
+  };
+
+  const handleSearchClientClick = (client: ClientInterface): void => {
+    setClientId(client.id);
   };
 
   const handleSubmit = async (event: FormEvent): Promise<void> => {
@@ -97,6 +101,10 @@ const CreateVisitDialog: FC<Props> = (props) => {
             value={phone}
             onChange={handlePhoneChange}
             label="Номер телефону"
+          />
+          <SearchForClient
+            onClick={handleSearchClientClick}
+            selectedClientId={clientId}
           />
         </Stack>
       </DialogContent>
