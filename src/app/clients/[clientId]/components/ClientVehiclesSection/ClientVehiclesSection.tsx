@@ -1,8 +1,9 @@
 import { FC } from "react";
-import { Box, Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 
 import NoData from "@/components/NoData";
 import PendingIndicator from "@/components/PendingIndicator";
+import VehicleCard from "@/components/VehicleCard";
 import { VehicleInterface } from "@/common/types/entities.types";
 
 type Props = {
@@ -20,12 +21,12 @@ const ClientVehiclesSection: FC<Props> = (props) => {
 
   return (
     <Container component="section" sx={{ my: 4 }}>
-      {vehicles.map((vehicle) => {
-        const { id } = vehicle;
-
-        //TODO: add reusable vehicle card from vehicles page
-        return <Box key={id}>{id}</Box>;
-      })}
+      <Typography variant="h5" component="h2">
+        Транспорт
+      </Typography>
+      {vehicles.map((vehicle) => (
+        <VehicleCard key={vehicle.id} vehicle={vehicle} />
+      ))}
     </Container>
   );
 };
