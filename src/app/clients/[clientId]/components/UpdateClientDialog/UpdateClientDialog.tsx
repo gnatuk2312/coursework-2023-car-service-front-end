@@ -11,22 +11,23 @@ import {
 } from "@mui/material";
 
 import { ClientInterface } from "@/common/types/entities.types";
-import { createClientRequest } from "@/common/services/api/client/client.api";
+import { updateClientRequest } from "@/common/services/api/client/client.api";
 
 type Props = {
+  client: ClientInterface;
   isOpen: boolean;
   onClose: () => void;
   onSuccessSubmit?: (client: ClientInterface) => void;
 };
 
-const CreateClientDialog: FC<Props> = (props) => {
-  const { isOpen, onClose, onSuccessSubmit } = props;
+const UpdateClientDialog: FC<Props> = (props) => {
+  const { client, isOpen, onClose, onSuccessSubmit } = props;
 
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
-  const [about, setAbout] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>(client.firstName);
+  const [lastName, setLastName] = useState<string>(client.lastName);
+  const [about, setAbout] = useState<string>(client.about ?? "");
+  const [email, setEmail] = useState<string>(client.email ?? "");
+  const [phone, setPhone] = useState<string>(client.phone ?? "");
 
   const handleFirstNameChange = (
     event: ChangeEvent<HTMLInputElement>
@@ -51,21 +52,23 @@ const CreateClientDialog: FC<Props> = (props) => {
 
     const body = { firstName, lastName, about, email, phone };
 
-    await createClientRequest({ body }).then((response) => {
-      if (!!onSuccessSubmit) onSuccessSubmit(response);
-    });
+    await updateClientRequest({ body, params: { id: client.id } }).then(
+      (response) => {
+        if (!!onSuccessSubmit) onSuccessSubmit(response);
+      }
+    );
   };
 
   return (
     <Dialog open={isOpen} onClose={onClose} fullWidth>
       <DialogTitle>
         <Typography variant="h5" component="p">
-          Створити Клієнта
+          Оновити Клієнта
         </Typography>
       </DialogTitle>
       <DialogContent>
         <Stack
-          id="create-client-dialog-form"
+          id="update-client-dialog-form"
           component="form"
           spacing={2}
           py={2}
@@ -101,14 +104,14 @@ const CreateClientDialog: FC<Props> = (props) => {
       <DialogActions>
         <Button
           type="submit"
-          form="create-client-dialog-form"
+          form="update-client-dialog-form"
           variant="outlined"
         >
-          Створити
+          Оновити
         </Button>
       </DialogActions>
     </Dialog>
   );
 };
 
-export default CreateClientDialog;
+export default UpdateClientDialog;

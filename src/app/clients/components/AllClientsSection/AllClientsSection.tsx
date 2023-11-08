@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 import {
   Box,
   Button,
@@ -17,7 +18,6 @@ import PendingIndicator from "@/components/PendingIndicator";
 import { ClientInterface } from "@/common/types/entities.types";
 import { PaginatedDataInterface } from "@/common/types/common.types";
 import { Card } from "./AllClientsSection.styles";
-import Link from "next/link";
 
 type Props = {
   clients: PaginatedDataInterface<ClientInterface>;
@@ -33,7 +33,7 @@ const AllClientsSection: FC<Props> = (props) => {
   return (
     <Container component="section" sx={{ my: 4 }}>
       {clients.data.map((client) => {
-        const { id, firstName, lastName, about, email, phone } = client;
+        const { id, firstName, lastName, email, phone } = client;
 
         return (
           <Card key={id}>
@@ -43,15 +43,12 @@ const AllClientsSection: FC<Props> = (props) => {
               alignItems="center"
             >
               <Box>
-                <Stack direction="row" alignItems="center" spacing={1}>
+                <Stack direction="row" alignItems="center" spacing={1} mb={1}>
                   <PersonIcon color="primary" />
                   <Typography variant="h6" component="p">
                     {firstName} {lastName}
                   </Typography>
                 </Stack>
-                <Typography variant="subtitle1" my={1}>
-                  {about}
-                </Typography>
                 <Stack direction="row" alignItems="center" spacing={1}>
                   {Boolean(phone) && (
                     <>

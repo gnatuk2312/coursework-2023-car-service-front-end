@@ -30,7 +30,8 @@ const Visits: FC = () => {
       const response = await getAllVisitsRequest();
       setVisits(response);
     } catch (error) {
-      alert(error);
+      const { message } = error as Error;
+      alert(message);
     } finally {
       setIsPending(false);
     }

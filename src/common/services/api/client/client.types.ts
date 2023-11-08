@@ -16,6 +16,35 @@ export interface CreateClientArgumentsInterface {
   body: CreateClientBodyInterface;
 }
 
+export type UpdateClientResponseType = ClientInterface;
+
+interface UpdateClientBodyInterface {
+  firstName: string;
+  lastName: string;
+  about?: string;
+  email?: string;
+  phone?: string;
+}
+
+interface UpdateClientParamsInterface {
+  id: string;
+}
+
+export interface UpdateClientArgumentsInterface {
+  body: UpdateClientBodyInterface;
+  params: UpdateClientParamsInterface;
+}
+
+export type GetClientByIdResponseType = ClientInterface;
+
+interface GetClientByIdParamsInterface {
+  id: string;
+}
+
+export interface GetClientByIdArgumentsInterface {
+  params: GetClientByIdParamsInterface;
+}
+
 export type GetAllClientsResponseType = PaginatedDataInterface<ClientInterface>;
 
 interface GetAllClientsQueryInterface {

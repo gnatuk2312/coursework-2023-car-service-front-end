@@ -19,3 +19,16 @@ export interface ClientInterface {
   email: string | null;
   phone: string | null;
 }
+
+export interface VehicleInterface {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  brand: string;
+  model: string;
+  year: number;
+  additionalInfo: string | null;
+  licensePlate: string;
+  engine: string;
+  owner: ClientInterface;
+}

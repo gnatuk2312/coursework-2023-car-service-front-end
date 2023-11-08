@@ -44,7 +44,8 @@ const Clients: FC = () => {
       });
       setClients(response);
     } catch (error) {
-      alert(error);
+      const { message } = error as Error;
+      alert(message);
     } finally {
       setIsPending(false);
     }
