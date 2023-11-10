@@ -1,3 +1,5 @@
+import { Currency } from "../enums/common.enums";
+
 export interface VisitInterface {
   id: string;
   createdAt: Date;
@@ -31,4 +33,14 @@ export interface VehicleInterface {
   licensePlate: string;
   engine: string;
   owner: ClientInterface;
+}
+
+export interface SparePartInterface {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  title: string;
+  brand: string;
+  price: number;
+  currency: Currency;
 }

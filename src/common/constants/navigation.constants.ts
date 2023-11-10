@@ -15,4 +15,8 @@ export const NAVIGATION = [
     href: "/vehicles",
     label: "Транспорт",
   },
+  {
+    href: "/spare-parts",
+    label: "Запчастини",
+  },
 ];
