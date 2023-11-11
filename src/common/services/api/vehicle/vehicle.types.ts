@@ -18,6 +18,37 @@ export interface CreateVehicleArgumentsInterface {
   body: CreateVehicleBodyInterface;
 }
 
+export type UpdateVehicleResponseType = VehicleInterface;
+
+interface UpdateVehicleBodyInterface {
+  brand: string;
+  model: string;
+  year: number;
+  additionalInfo?: string | null;
+  licensePlate: string;
+  engine: string;
+  ownerId: string;
+}
+
+interface UpdateVehicleParamsInterface {
+  id: string;
+}
+
+export interface UpdateVehicleArgumentsInterface {
+  body: UpdateVehicleBodyInterface;
+  params: UpdateVehicleParamsInterface;
+}
+
+export type GetVehicleByIdResponseType = VehicleInterface;
+
+interface GetVehicleByIdParamsInterface {
+  id: string;
+}
+
+export interface GetVehicleByIdArgumentsInterface {
+  params: GetVehicleByIdParamsInterface;
+}
+
 export type GetVehiclesByOwnerIdResponseType = VehicleInterface[];
 
 interface GetVehicleByOwnerIdParamsInterface {

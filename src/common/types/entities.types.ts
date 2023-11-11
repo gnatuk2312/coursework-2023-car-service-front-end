@@ -44,3 +44,15 @@ export interface SparePartInterface {
   price: number;
   currency: Currency;
 }
+
+export interface PerformedWorkInterface {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  title: string;
+  description: string;
+  price: number;
+  currency: Currency;
+  vehicle: VehicleInterface;
+  spareParts: SparePartInterface[];
+}
