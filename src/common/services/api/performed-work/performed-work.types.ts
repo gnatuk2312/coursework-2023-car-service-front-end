@@ -16,6 +16,16 @@ export interface CreatePerformedWorkArgumentsInterface {
   body: CreatePerformedWorkBodyInterface;
 }
 
+export type GetPerformedWorkByIdResponseType = PerformedWorkInterface;
+
+interface GetPerformedWorkByIdParamsInterface {
+  id: string;
+}
+
+export interface GetPerformedWorkByIdArgumentsInterface {
+  params: GetPerformedWorkByIdParamsInterface;
+}
+
 export type GetPerformedWorksByVehicleIdResponseType = PerformedWorkInterface[];
 
 interface GetPerformedWorksByVehicleIdParamsInterface {
