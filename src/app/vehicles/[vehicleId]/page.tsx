@@ -11,6 +11,7 @@ import {
   VehiclePerformedWorksSection,
   VehicleSection,
 } from "./components";
+import Protected from "@/components/HOC/Protected";
 import useDialogState from "@/hooks/useDialogState";
 import { getPerformedWorksByVehicleIdRequest } from "@/common/services/api/performed-work/performed-work.api";
 import { getVehicleByIdRequest } from "@/common/services/api/vehicle/vehicle.api";
@@ -125,13 +126,13 @@ const VehicleId: FC<Props> = (props) => {
         </Stack>
       </Container>
       <VehicleSection vehicle={vehicle} isPending={isPending} />
+      <VehiclePerformedWorksSection
+        performedWorks={performedWorks}
+        vehicleId={vehicleId}
+        isPending={isPending}
+      />
       {vehicle !== null && (
         <>
-          <VehiclePerformedWorksSection
-            performedWorks={performedWorks}
-            vehicleId={vehicle.id}
-            isPending={isPending}
-          />
           <UpdateVehicleDialog
             vehicle={vehicle}
             isOpen={isUpdateVehicleDialogOpen}
@@ -150,4 +151,4 @@ const VehicleId: FC<Props> = (props) => {
   );
 };
 
-export default VehicleId;
+export default Protected(VehicleId);

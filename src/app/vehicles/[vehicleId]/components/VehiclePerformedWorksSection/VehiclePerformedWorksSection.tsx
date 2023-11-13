@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
@@ -6,7 +7,6 @@ import NoData from "@/components/NoData";
 import PendingIndicator from "@/components/PendingIndicator";
 import { PerformedWorkInterface } from "@/common/types/entities.types";
 import { Card } from "./VehiclePerformedWorksSection.styles";
-import Link from "next/link";
 
 type Props = {
   performedWorks: PerformedWorkInterface[];
